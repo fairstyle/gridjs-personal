@@ -13,6 +13,7 @@ import ServerSort from '../../../pipeline/sort/server';
 export interface SortConfig {
   enabled?: boolean;
   compare?: Comparator<TCell>;
+  direction?: 1 | -1;
 }
 
 // generic sort config:
@@ -55,7 +56,7 @@ export class Sort extends BaseComponent<SortProps & SortConfig, SortState> {
       this.sortProcessor = this.getOrCreateSortProcessor();
       this.updateStateFn = this.updateState.bind(this);
       this.store.on('updated', this.updateStateFn);
-      this.state = { direction: 0 };
+      this.state = { direction: props.direction ?? 0 };
     }
   }
 
