@@ -41,7 +41,7 @@ export class Pagination extends PluginBaseComponent<
     prevButton: true,
     buttonsCount: 3,
     limit: 10,
-    resetPageOnUpdate: true,
+    resetPageOnUpdate: true
   };
 
   constructor(props, context) {
