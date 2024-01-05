@@ -1,4 +1,5 @@
-import enUS from './en_US';
+import esES from '../../l10n/es_ES';
+
 type MessageFormat = (...args) => string;
 type Message = string | MessageFormat;
 export type Language = { [key: string]: Message | Language };
@@ -9,7 +10,7 @@ export class Translator {
 
   constructor(language?: Language) {
     this._language = language;
-    this._defaultLanguage = enUS;
+    this._defaultLanguage = esES;
   }
 
   /**

@@ -1,18 +1,18 @@
 export default {
   search: {
-    placeholder: 'Buscar...',
+    placeholder: '🔍 Buscar...',
   },
   sort: {
     sortAsc: 'Ordenar la columna en orden ascendente',
     sortDesc: 'Ordenar la columna en orden descendente',
   },
   pagination: {
-    previous: 'Anterior',
-    next: 'Siguiente',
+    previous: '⬅ ',
+    next: '➡ ',
     navigate: (page, pages) => `Página ${page} de ${pages}`,
     page: (page) => `Página ${page}`,
-    showing: 'Mostrando registros del',
-    of: 'de un total de',
+    showing: '📋 Registros desde el',
+    of: '|',
     to: 'al',
     results: 'registros',
   },
