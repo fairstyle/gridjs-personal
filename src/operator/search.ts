@@ -11,12 +11,22 @@ export default function (
   selector?: (cell: TCell, rowIndex: number, cellIndex: number) => string,
 ): Tabular {
   // escape special regex chars
+  let specialCol = "";
+  if(keyword.includes("]:")) {
+    [specialCol, keyword] = keyword.split("]:");
+    specialCol = specialCol.replace(/(\[)/g, "");
+  }
+
   keyword = keyword.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 
   return new Tabular(
     tabular.rows.filter((row, rowIndex) =>
       row.cells.some((cell, cellIndex) => {
         if (!cell) {
+          return false;
+        }
+
+        if(specialCol !== "" && columns[cellIndex].id !== specialCol) {
           return false;
         }
 
