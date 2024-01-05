@@ -104,6 +104,8 @@
     "prebuild": "npm run clean",
     "build": "run-p build:grid build:i18n build:plugins build:themes",
     "build:grid": "microbundle build --raw --external none --tsconfig tsconfig.release.json",
+    "build:gridjs": "microbundle build --raw --external none --tsconfig tsconfig.release.json && mv dist/gridjs.umd.js D:/laragon/www/repgmi/assets/plugin/gridjs/gridjs.min.js",
+    "build:gridcss": "npx tailwindcss -i ./dist_css/input.css -o D:/laragon/www/repgmi/assets/plugin/gridjs/gridjs.min.css --minify --watch",
     "build:i18n": "microbundle build --raw --cwd l10n --tsconfig l10n/tsconfig.release.json",
     "build:plugins": "microbundle build --raw --cwd plugins/selection --tsconfig plugins/selection/tsconfig.release.json",
     "postbuild": "node build/node-13-exports.js",
@@ -123,7 +125,8 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "preact": "^10.10.6"
+    "preact": "^10.10.6",
+    "tailwindcss": "^3.4.0"
   },
   "changelog": {
     "labels": {

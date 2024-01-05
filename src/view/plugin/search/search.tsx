@@ -18,6 +18,8 @@ export interface SearchConfig {
     url?: (prevUrl: string, keyword: string) => string;
     body?: (prevBody: BodyInit, keyword: string) => BodyInit;
   };
+  checkboxValue?: boolean;
+  checkboxText?: string;
 }
 
 export class Search extends PluginBaseComponent<
@@ -89,12 +91,12 @@ export class Search extends PluginBaseComponent<
     const keyword = event.target.value;
     this.actions.search(keyword);
   }
-
+  
   render() {
     if (!this.props.enabled) return null;
 
     let onInput = this.onChange.bind(this);
-
+    
     // add debounce to input only if it's a server-side search
     if (this.searchProcessor instanceof ServerGlobalSearchFilter) {
       onInput = debounce(onInput, this.props.debounceTimeout);
@@ -115,6 +117,21 @@ export class Search extends PluginBaseComponent<
           )}
           value={this.store.state.keyword}
         />
+        { this.props.checkboxValue ? 
+          <input 
+            type="checkbox" 
+            className={classJoin(
+              className('search', 'checkbox'),
+              this.config.className.searchCheckbox,
+            )}
+          /> : null }
+          { (this.props.checkboxValue && this.props.checkboxText) ? 
+            <span
+              className={classJoin(
+                className('search', 'checkbox', 'text'),
+                this.config.className.searchCheckboxText,
+              )}
+            >{this.props.checkboxText}</span> : null }
       </div>
     );
   }

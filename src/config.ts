@@ -72,6 +72,8 @@ export interface Config {
     footer: string;
     header: string;
     search: string;
+    searchCheckbox: string;
+    searchCheckboxText: string;
     sort: string;
     pagination: string;
     paginationSummary: string;
